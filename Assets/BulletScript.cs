@@ -35,6 +35,9 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(this.gameObject);
             Destroy(other.gameObject);
+            gameManagerScript.Hit(transform.position);
+            //gameManagerScript.Hit();
+
         }
     }
 

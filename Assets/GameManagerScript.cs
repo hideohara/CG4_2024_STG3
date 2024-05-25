@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UIElements;
 
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject gameOverText;
     private bool gameOverFlag = false;
+    public AudioSource hitAudioSource;
+    public TextMeshProUGUI scoreText;
+    private int score = 0;
+    private int gameTimer = 0;
+    public GameObject bombParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +34,9 @@ public class GameManagerScript : MonoBehaviour
             }
         }
 
+        // スコア表示
+        scoreText.text = "SCORE  " + score;
+
     }
 
     void FixedUpdate()
@@ -37,12 +47,16 @@ public class GameManagerScript : MonoBehaviour
             return;
         }
 
-        int r = Random.Range(0, 50);
+        // 敵の発生
+        gameTimer++;
+        int max = 50 - gameTimer / 100;
+        int r = Random.Range(0, max);
         if (r == 0)
         {
             float x = Random.Range(-3.0f, 3.0f);
-            Instantiate(enemy, new Vector3(x, 0, 15), Quaternion.identity);
+            Instantiate(enemy, new Vector3(x, 0.0f, 15), Quaternion.identity);
         }
+
     }
 
     // ゲームオーバー開始
@@ -56,5 +70,18 @@ public class GameManagerScript : MonoBehaviour
     {
         return gameOverFlag;
     }
+
+    // 弾と敵が衝突
+    public void Hit(Vector3 position)
+    //public void Hit()
+    {
+        hitAudioSource.Play();
+        score += 1;
+        // 爆発パーティクル発生
+        Instantiate(bombParticle, position, Quaternion.identity);
+        //Instantiate(bombParticle, transform.position, Quaternion.identity);
+
+    }
+
 
 }

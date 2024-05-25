@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject gameManager;
     private GameManagerScript gameManagerScript; // Script‚ª“ü‚é•Ï”
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +92,7 @@ public class PlayerScript : MonoBehaviour
         {
             gameManagerScript.GameOverStart();
         }
+
     }
 
 }
