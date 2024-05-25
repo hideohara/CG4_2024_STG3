@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
 
+
     }
 
     // Update is called once per frame
@@ -41,8 +42,10 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             animator.SetBool("move", false);
         }
+    }
 
-
+    void FixedUpdate()
+    {
         // ’e”­ŽË
         if (bulletTimer == 0)
         {

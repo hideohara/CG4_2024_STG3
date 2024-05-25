@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150ea64794da7624c9067287d57fd977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 6791792795418402416, guid: 1820e0e45ca008742b18d25789d41fbc, type: 3}
 --- !u!4 &868114276
 Transform:
   m_ObjectHideFlags: 0
@@ -648,3 +649,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1872042927}
   animator: {fileID: 1872042924}
+  bullet: {fileID: 4342593290289270021, guid: 18a730e5695089e4cbcaff4190542450, type: 3}
