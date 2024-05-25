@@ -5,10 +5,16 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private float moveSpeed = 4;
+    private GameObject gameManager; // GameObjectそのものが入る変数
+    private GameManagerScript gameManagerScript; // Scriptが入る変数
 
     // Start is called before the first frame update
     void Start()
     {
+        // ゲームマネージャーのスクリプトを探す
+        gameManager = GameObject.Find("GameManager"); // 名前から探す
+        gameManagerScript = gameManager.GetComponent<GameManagerScript>();
+
         Destroy(gameObject, 5);
 
         //transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -27,6 +33,11 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManagerScript.IsGameOver() == true)
+        {
+            return;
+        }
+
         Vector3 velocity = new Vector3(0, 0, moveSpeed * Time.deltaTime);
         transform.position += transform.rotation * velocity;
 

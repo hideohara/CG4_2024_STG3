@@ -23,6 +23,13 @@ public class PlayerScript : MonoBehaviour
     {
         float moveSpeed = 2.0f;
         float stageMax = 4.0f;
+
+        if (gameManagerScript.IsGameOver() == true)
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+            return;
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             if (transform.position.x < stageMax)
@@ -48,6 +55,11 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (gameManagerScript.IsGameOver() == true)
+        {
+            return;
+        }
+
         // ’e”­ŽË
         if (bulletTimer == 0)
         {
