@@ -8,12 +8,14 @@ public class PlayerScript : MonoBehaviour
     public Animator animator;
     public GameObject bullet;
     private int bulletTimer = 0;
+    public GameObject gameManager;
+    private GameManagerScript gameManagerScript; // Script‚ª“ü‚é•Ï”
 
     // Start is called before the first frame update
     void Start()
     {
-
-
+        // Script‚ğæ“¾‚·‚é
+        gameManagerScript = gameManager.GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -53,7 +55,7 @@ public class PlayerScript : MonoBehaviour
             {
                 Vector3 position = transform.position;
                 position.y += 0.8f;
-                position.z += 0.5f;
+                position.z += 1.0f;
 
                 Instantiate(bullet, position, Quaternion.identity);
 
@@ -70,4 +72,13 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            gameManagerScript.GameOverStart();
+        }
+    }
+
 }

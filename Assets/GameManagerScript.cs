@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class GameMamanagerScript : MonoBehaviour
+public class GameManagerScript : MonoBehaviour
 {
     public GameObject enemy;
+    public GameObject gameOverText;
 
     // Start is called before the first frame update
     void Start()
     {
         Screen.SetResolution(1920, 1080, false);
-
-
     }
 
     // Update is called once per frame
@@ -29,6 +27,12 @@ public class GameMamanagerScript : MonoBehaviour
             float x = Random.Range(-3.0f, 3.0f);
             Instantiate(enemy, new Vector3(x, 0, 15), Quaternion.identity);
         }
+    }
+
+    // ゲームオーバー開始
+    public void GameOverStart()
+    {
+        gameOverText.SetActive(true);
     }
 
 }
