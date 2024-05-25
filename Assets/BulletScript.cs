@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class GameMamanagerScript : MonoBehaviour
+public class BulletScript : MonoBehaviour
 {
+    public Rigidbody rb;
+    private float moveSpeed = 6;
+
     // Start is called before the first frame update
     void Start()
     {
-        Screen.SetResolution(1920, 1080, false);
+        rb.velocity = new Vector3(0, 0, moveSpeed);
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame
